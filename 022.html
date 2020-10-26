@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 22</title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 22
+        </h1>
+        <h4>swicth / case / obj.constructor</h4>
+    </header>
+    <article class="container">
+        <p>
+            You are creating a function by using JavaScript. The function accepts an object as the parameter and
+            returns a string that identifies the data type of the object.<br>
+            You have the following requirements:<br>
+        <ul>
+            <li>The function must return "Number" if the object is a number.</li>
+            <li>The function must return "String" if the object is a string.</li>
+            <li>The function must return "Unknown" if the object is neither a number nor a string.</li>
+        </ul>
+        You need to implement the function to meet the requirements.<br>
+        How should you build the code segment? (To answer, select the appropriate options from the drop-down
+        lists in the answer area.)<br>
+        </p>
+        <img src="22.PNG" alt="hotarea"></img>
+
+        <hr>
+        <p>Solución:<br><br>
+            &nbsp; &nbsp; &nbsp;function getObjectType(obj)<br>
+            &nbsp; &nbsp; &nbsp;{<br>
+                &nbsp; &nbsp; &nbsp;swicth (obj.constructor) { <br>
+                    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;case Number: return "Number"; break;<br>
+                    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;case String: return "String"; break;<br>
+                    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;default: return "Unknow";<br>
+                    &nbsp; &nbsp; &nbsp;}<br>
+            <br>}
+
+
+        </p>
+        <p>Explicación:<br>
+            Use the switch statement to select one of many blocks of code to be executed.<br>
+            Syntax<br>
+            switch(expression) {<br>
+            &nbsp; &nbsp; &nbsp;case n:<br>
+            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;code block<br>
+            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;break;<br>
+            &nbsp; &nbsp; &nbsp;case n:<br>
+            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;codeblock<br>
+            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;break;<br>
+            &nbsp; &nbsp; &nbsp;default:<br>
+            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;default code block<br>
+            }<br>
+            This is how it works:<br>
+            The switch expression is evaluated once.<br>
+            The value of the expression is compared with the values of each case.<br>
+            If there is a match, the associated block of code is executed.<br>
+            Object.prototype.constructor<br>
+            Returns a reference to the Object function that created the instance's prototype. Note that the value of
+            this
+            property is a reference to the function itself, not a string containing the function's name. The value is
+            only
+            read-only for primitive values such as 1, true and "test".<br>
+            Description<br>
+            All objects inherit a constructor property from their prototype:<br>
+            &nbsp; &nbsp; &nbsp;var o = {};<br>
+            &nbsp; &nbsp; &nbsp; o.constructor === Object; // true<br>
+            &nbsp; &nbsp; &nbsp;var a = [];<br>
+            &nbsp; &nbsp; &nbsp;a.constructor === Array; // true<br>
+            &nbsp; &nbsp; &nbsp;var n = new Number(3);<br>
+            &nbsp; &nbsp; &nbsp;n.constructor ===Number; // true<br>
+            The constructor property is created together with the function as a single property of func.prototype. <br>
+        </p>
+        <p>Reference:<br>
+
+            <a
+                href="https://www.w3schools.com/js/js_switch.asp">https://www.w3schools.com/js/js_switch.asp</a><br>
+            <a
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor\">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor\</a><br>
+
+        </p>
+
+
+        <div class="container">
+            <input type="button" onclick="prueba();" value="Prueba"></input><br>
+            <div id="resultados"></div>
+        </div>
+        <script>
+            function prueba() {
+                let objeto1 = new Object;
+                let array1 = new Array;
+                let string = new String;
+                let n = new Number(3);
+                const resultados = document.getElementById("resultados");
+                
+                
+                resultados.innerHTML = " let objeto1 = new Object; " + getObjectType(objeto1) + "<br>";
+                resultados.innerHTML += " let array1 = new Array; " + getObjectType(array1) + "<br>";;
+                resultados.innerHTML += " let string = new String; " + getObjectType(string) + "<br>";;
+                resultados.innerHTML += " let n = new Number(3); " + getObjectType(n) + "<br>";;
+
+
+            }
+            function getObjectType(obj) {
+                switch (obj.constructor) {
+                    case Number: return ">>>>   number"; break;
+                    case String: return ">>>>   String"; break;
+                    default: return ">>>>  Unknow";
+                }
+            }
+
+        </script>
+        <br>
+        <br>
+
+</body>
+
+</html>

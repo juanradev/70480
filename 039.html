@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 39</title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 39
+        </h1>
+        <h4>ms-wrap-flow</h4>
+    </header>
+    <article class="container">
+        <p>
+            You are developing a page that includes text and an illustration. The web page resembles the following
+            image.
+        </p>
+        <img src="39.PNG" alt="hotarea"></img>
+        <p>
+            You have the following requirements:<br>
+            - The illustration must be in the center of the page.<br>
+            - The text must flow around the left, right, top, and bottom of the illustration.<br>
+            You need to ensure that the layout of the web page meets the requirements.<br>
+            Which line of code should you use?<br>
+        </p>
+        <ol type="A">
+            <li>. -ms-wrap-flow: both;</li>
+            <li>. -ms-wrap-flow: clear;</li>
+            <li>. -ms-wrap-flow: maximum;</li>
+            <li>. -ms-wrap-flow: auto;</li>
+        </ol>
+
+
+
+
+
+
+        <hr>
+        <p>Solución:<br><br>A. -ms-wrap-flow: both;
+
+        <p>nota:
+            según -ms-wrap-flow: auto | both | start | end | maximum | clear<br>
+            este tema de las exclusiones solo he conseguido información para internet explorer<br>
+            Desconozco si está DEPRECATED o no ya que me ha costado encontrar documentación<br>
+            
+          <a href="https://webdesign.tutsplus.com/es/tutorials/css-exclusions--cms-28087">https://webdesign.tutsplus.com/es/tutorials/css-exclusions--cms-28087</a><br>
+          <a href="https://rachelandrew.co.uk/archives/2016/03/16/css-exclusions-and-grid-layout/">CSS Exclusions y Grid Layout por Rachel Andrew</a><br>
+          En esta, ya te dicen que para chrome, edge, etc.. los resultados son con imagenes para ver como quedaría
+          <a href=" http://advent2012.digitpaint.nl/21/"> http://advent2012.digitpaint.nl/21/</a><br>
+        </p>
+        
+
+        </p>
+        <p>Explicación:<br>
+            -ms-wrap-flow
+            Gets or sets a value that specifies how exclusions impact inline content within block-level elements.<br>
+            Syntax<br>
+            -ms-wrap-flow: auto | both | start | end | maximum | clear<br>
+            both<br>
+            Inline flow content can flow on all sides of the exclusion.<br>
+
+
+
+            
+
+
+        </p>
+        <p>Reference:<br>
+
+            <a
+                href="http://msdn.microsoft.com/en-us/library/ie/hh673558">http://msdn.microsoft.com/en-us/library/ie/hh673558</a><br>
+            <a href="https://drafts.csswg.org/css-exclusions-1" />https://drafts.csswg.org/css-exclusions-1/</a><br>
+
+        </p>
+
+
+
+
+
+        <div class="container">
+            <style>
+                img {
+          max-width: 100%;
+        }
+        
+        .wrapper {
+          margin: 0 auto;
+          width: 90%;
+          max-width: 700px;
+          display: -ms-grid;
+          -ms-grid-columns: 1fr 2fr 1fr 2fr 1fr 2fr;
+          -ms-grid-rows: auto auto auto auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr 2fr);
+          grid-template-rows: repeat(4, auto);
+        }
+        
+        .wrapper .inner{
+          -ms-grid-column: 1;
+          -ms-grid-column-span: 6;
+          -ms-grid-row: 1;
+          -ms-grid-row-span: 4;
+          grid-column: 1 / span 6;
+          grid-row: 1 / span 4;
+        }
+        
+        .wrapper .exclusion {
+           -ms-grid-column: 3;
+          -ms-grid-column-span: 3;
+          -ms-grid-row: 2;
+          -ms-grid-row-span: 2;
+          -ms-wrap-flow: both;
+          grid-column: 3 / span 3;
+          grid-row: 2 / span 2;
+          padding: 5px 10px;
+        }
+        
+        .wrapper .exclusion img {
+          border-radius: 10px;
+        }
+            </style>
+
+            <script>
+                function seleccion(opcion)
+                {
+
+                wrapper = document.getElementsByClassName("wrapper");
+                wrapper[0].style.cssText = "-ms-wrap-flow:" + opcion;
+                exclusion = document.getElementsByClassName("exclusion");
+                exclusion[0].style.cssText = "-ms-wrap-flow:" + opcion;
+                 
+
+                }
+            </script>
+
+           <select onchange="seleccion(this.value)">
+               <option  value="auto">auto</option>
+               <option selected value="both">both</option>
+               <option value="start">start</option>
+               <option value="end">end</option>
+               <option value="maximum">maximum</option>
+               <option value="clear">clear</option>
+
+            
+           </select>
+      
+            <div class="wrapper"><div class="inner">
+                <h1>CSS Exclusions Example ABRIR EN IEXPLORER</h1>
+                
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam posuere quam non enim commodo, ac pellentesque tortor lacinia. Aenean iaculis interdum tempor. Nullam porttitor lectus eget mollis egestas. Cras posuere velit id vehicula tempor. Mauris id ex id nisi sagittis ornare vitae a erat. Aliquam nisi risus, gravida sit amet augue id, feugiat tempor dui. Vestibulum tincidunt iaculis tellus, eget finibus odio. Quisque ac dapibus massa. Donec placerat nisi velit, quis sagittis turpis lobortis ac. Praesent ornare malesuada velit, id placerat enim imperdiet sit amet. Vestibulum consequat ligula tellus, quis lacinia mauris porta in. Praesent sit amet faucibus purus. Integer vel sagittis augue.</p>
+              
+              <p>Aliquam tempor interdum volutpat. Suspendisse potenti. Nunc nibh elit, sagittis nec libero a, pretium fermentum sapien. Aliquam eu risus eu dui varius elementum. Curabitur ut ex luctus, egestas dui sit amet, malesuada lectus. Cras a nibh in velit mattis feugiat at at eros. Etiam et leo arcu. Maecenas egestas enim purus, at ornare velit laoreet a. Etiam egestas pharetra diam, non accumsan sapien posuere ornare. Ut sed velit porttitor dolor tincidunt tincidunt. Pellentesque sit amet pulvinar diam. Cras et purus vulputate, consequat dui vel, cursus risus. Quisque pulvinar convallis tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              
+              <p>Sed mollis fermentum lorem, vel vulputate lectus lacinia sit amet. Praesent pulvinar ante id consequat cursus. Quisque faucibus dui et massa suscipit, nec hendrerit nulla ornare. Donec accumsan eros a dictum tempor. Vestibulum a metus id quam eleifend ornare. Fusce sit amet lacus ut nisi viverra volutpat ultrices a ipsum. Ut lacus leo, dictum sit amet nulla ac, volutpat tempor nunc. Donec ut enim eget massa luctus finibus ac ac lorem. Vestibulum pretium lacus a orci molestie volutpat quis eget mi. Aenean lacus erat, dignissim eget mollis auctor, vehicula a dolor. Curabitur id mollis eros, at auctor ipsum.</p>
+              </div>
+               <div class="exclusion"><img src="gallery8.jpg"></div>
+              </div>
+     
+        </div>
+
+        <br>
+        <br>
+
+</body>
+
+</html>

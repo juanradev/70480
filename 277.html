@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 277 </title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 277 <span style="color:red">ERRATA</span>
+        </h1>
+        <h4>XMLHttpRequest</h4>
+    </header>
+    <article class="container">
+        <p>
+            QUESTION 277
+            You are writing a jQuery function that makes an Ajax request to a remote server.<br>
+            You need to ensure that if Ajax communications are unsupported by a browser, an error is thrown.<br>
+            You write the following code.
+        </p>
+        <img src="277.PNG" alt="277 targets.."/>
+            <p>How should you complete the code? To answer, drag the appropriate code elements to the correct targets.
+                Each code element may be used once, more than once, or not at all. You may need to drag the split bar
+                between panes or scroll to view content.<br>
+                NOTE: Each correct selection is worth one point.
+                
+            </p>
+            <img src="277_1.PNG" alt="277 codes.."/>   
+
+        <hr>
+        <p>Solución: <span style="color:red">ERRATA</span><br>
+            <img src="277solucion.png" alt="277 codes.."/>   
+        </p>
+        <hr>
+        <p>Solución: CORRECTA
+        <xmp>
+            var xhrequest ;
+            if (window.XMLHttpRequest)
+                     xhrequest = new  XMLHttpRequest ();
+            else
+            {
+                throw new Error("Error Mesaje")
+            }
+        </xmp>
+        <hr>
+        Nota: con window.XMLHttpRequest comprobamos que el navegador admite XMLHttpRequest<br>
+        en caso afirmativo   request = new XMLHttpRequest ();<br>
+        la errata es request = new <span style="color:red">ActiveXObject</span><br>
+        
+        
+        
+        <p>si quieres saber que era ActiveXObject aqui tienes algo de información  <a href="https://uniwebsidad.com/libros/ajax/capitulo-7/la-primera-aplicacion">
+            https://uniwebsidad.com/libros/ajax/capitulo-7/la-primera-aplicacion</a>....
+            <br>
+ 
+            
+       
+        </p>
+  
+<script>
+     
+   
+
+
+   
+    var xhrequest ;
+    if (window.XMLHttpRequest)
+        request = new XMLHttpRequest ();
+    else
+    {
+        throw new Error("Error Mesaje")
+    }
+    let respuesta;
+    
+    const personApiUrl = "006.json";
+   
+    function download() {
+     let lista = [];
+     const prueba = document.getElementById("prueba");
+    const request = new XMLHttpRequest();
+    request.open("GET", personApiUrl, true); 
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200 ) {
+            const response = JSON.parse(request.responseText);
+         
+         prueba.innerText = request.responseText;
+            
+        }
+    };
+    request.send();
+}
+ 
+  
+
+
+  
+
+
+
+</script>
+    <div class="container">
+        <input type="button" onclick="download();" value="Prueba"></input><br>
+         
+    </div> 
+    <div id="prueba">aqui aparecerá el json recibido
+        <br><br>
+</div>
+
+ 
+ 
+</article>
+
+
+
+</body>
+
+</html>

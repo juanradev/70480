@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 56</title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 56
+        </h1>
+        <h4>Operador === valor y tipo</h4>
+    </header>
+    <article class="container">
+        <p>
+            You are testing the value of the following variable in JavaScript.<br>
+            var height = "300";<br>
+            A block of code must execute if the following conditions are true:<br>
+        <ul>
+            <li>The height variable is set to 300.</li>
+            <li>The height variable is of type string.</li>
+        </ul>
+        You need to implement the code to run the test.<br>
+        Which line of code should you use?<br>
+        <ul type="A">
+            <li>if (height == 300)</li>
+            <li>if (height == "300")</li>
+            <li>if (height ! "300")</li>
+            <li>if (height ! = 300)</li>
+        </ul>
+        </p>
+        
+
+        <hr>
+        <p>Solución:  B <br><br>
+        nota: la verdad es que if (height == 300) daría el mismo resultado if (height == "300") ya que solo comprueba el valor <br>
+        debería haber sido con:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if (height <span  style="color:red">=== </span>300) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if (height <span style="color:red">=== </span> "300") <br>
+        Ya que con ello se verifica que valga "300" y que se de tipo string<br>
+        en el ejemplo utilizo ===<br>
+
+            <script>
+               'use strict';
+                var height ="300";
+                function opcionA(){alert (height === 300);}
+                function opcionB(){alert (height === "300");}
+                function opcionC(){alert (height != "300");}
+                function opcionD(){alert (height != 300);}
+            </script>
+                <button type="button" onclick="opcionA()">opcion A</button>
+                <button type="button" onclick="opcionB()">opcion B</button>
+                <button type="button" onclick="opcionC()">opcion C</button>
+                <button type="button" onclick="opcionD()">opcion D</button>
+        
+         </p>
+        <p>Explicación:<br>
+            Use == to test for equality.<br>
+            Use "300" to test for the string.<br>
+        </p>
+     
+        <br>
+        <br>
+
+</body>
+
+</html>

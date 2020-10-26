@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 192</title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 192
+        </h1>
+        <h4>web Workers</h4>
+    </header>
+    <article class="container">
+        <p>
+            QUESTION 192
+            You are developing a web page that performs CPU-intensive calculations. A web worker processes these
+            calculations on a separate background thread. The process is instantiated from the web page.
+            You need to stop the web worker process after the calculations are completed.<BR>
+            Which two actions can you perform to achieve the goal? Each correct answer presents a complete solution.
+            (Choose two.)<Br>
+            NOTE: Each correct selection is worth one point.<BR>
+        <ol type="A">
+            <li>From the web page, call the close() method.</li>
+            <li>From the web worker process, call the terminate() method.</li>
+            <li>From the web page, call the terminate() method.</li>
+            <li>From the web worker process, call the close() method</li>
+        </ol>
+
+
+        <hr>
+        <p>Solución:<br>
+            C desde la pagina invoca a  terminate() method<br>
+            D desde el webworker ejecuta self.close()<br>
+
+        </p>
+        <p>Explicación:<br>
+            Explanation:<br>
+            Terminating a worker<br>
+            If you need to immediately terminate a running worker, you can do so by calling the worker's terminate()<br>
+            method:<br>
+            myWorker.terminate();<br>
+            The worker thread is killed immediately without an opportunity to complete its operations or clean up after
+            itself.
+            Workers may close themselves by calling their own close method:<br>
+            close();<br>
+
+
+
+
+        </p>
+        <p>Reference:<br>
+
+            <a href=" https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">
+                https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers</a><br>
+
+        </p>
+
+
+
+        <hr>
+
+        <script id="wwjs" type="javascript/worker">
+            var i = 0;
+    
+            function timedCount() {
+              i = i + 1;
+              postMessage(i);
+              setTimeout("timedCount()",500);
+            }
+            
+            function messageHandler(event)
+            {
+                self.postMessage("<br>Recibido:" + event.data.data);
+                 
+                const data = event.data;
+                switch (data.command)
+                {
+                    case "ARREA" : 
+                        console.log ("trabajando");
+                        timedCount();
+                        break;
+                    case "GENERARERROR":
+                         console.log ("voy a generar un error llamada a una funcion que no existe");
+                         addalert(); // esta funcion no existe
+                    case "FINISH":
+                         console.log ("lo paro");
+                         self.postMessage("<br>el worker ejecuta self.close()");
+                         self.close();
+                         break;
+    
+                }
+      
+            }
+            self.addEventListener("message", messageHandler,false);
+        </script>
+        <script>
+            var webWorker;
+
+            /* manejador y event error */
+            function errorHandler(event) {
+                console.log(event.message);
+                console.log(event.filename);
+                console.log(event.lineno);
+                webWorker.terminate();
+            }
+
+            function arranca() {
+                if (webWorker != undefined) return;
+                const WorkerBlob = new Blob([document.querySelector("#wwjs").textContent]);
+                const workerURL = URL.createObjectURL(WorkerBlob);
+                webWorker = new Worker(workerURL);
+                /*
+                        esto es para recordad que puedo manjar eventos con on o con addEventListener
+                        webWorker.onmessage = function (event) {
+                                document.getElementById("result").innerHTML += event.data;
+                            };
+    
+                    */
+                webWorker.addEventListener("message", function (event) {
+                    document.getElementById("result").innerHTML += event.data;
+                },
+                    false);
+
+                webWorker.addEventListener("error", errorHandler, false);
+
+                const msg = {
+                    "command": "ARREA",
+                    "data": "Arranca Carlos"
+                };
+
+
+                webWorker.postMessage(msg);
+
+            }
+
+
+            function mandaparar() {
+                if (webWorker == undefined) return;
+                const msg = {
+                    "command": "FINISH",
+                    "data": "cuelga tu"
+                };
+
+                webWorker.postMessage(msg);
+                webWorker = undefined;
+            }
+
+            function stopWorker() {
+                if (webWorker == undefined) return;
+                document.getElementById("result").innerHTML += "<br> Lo paro ejecutando  webWorker.terminate()";
+                webWorker.terminate();
+                webWorker = undefined;
+            }
+
+        </script>
+
+        <div class="container">
+            <button onclick="arranca()">Start Worker</button><br>
+            <button onclick="mandaparar()">Stop Worker (desde alli)</button><br>
+            <button onclick="stopWorker()">Parar el Worker desde aqui</button><br>
+            <div id="result">
+
+            </div>
+        </div>
+
+
+
+
+        <br>
+        <br>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 107</title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 107
+        </h1>
+        <h4>
+            XMLHttpRequest/ ActiveXObject responseXML</h4>
+    </header>
+    <article class="container">
+        <p>You have a webpage that includes the following markup:<br>
+            <img src="107_1.PNG" /><br>
+            An XML file named message.xml resides on a web server. The structure of the file is as follows:<br>
+
+            <img src="107_2.PNG" /><br>
+            <br>
+            You are developing a code-based solution to parse the contents of the XML file and display the information
+            on the page.<br>
+            The solution must work on both modern and older browsers.<br>
+            You need to display the information from the XML file onto the page.<br>
+            How should you create the JavaScript code? (Develop the solution by selecting the required code segments
+            and arranging them in the correct order. You may not need all of the code segments.)</p>
+            <br>
+            <br>
+            <img src="107_3.PNG" /><br>
+            <p style="color:red">ERRATA</p>
+            <img src="107_4.PNG" /><br>
+            
+<p>SOLUCION <p style="color:red">ERRATA (les fata You need to display the information from the XML file onto the page.)</p></p>
+
+
+<table border="1">
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+        <td>
+<xmp>
+if (window.XMLHttpRequest) 
+</xmp>
+        </td>
+        <td rowspan="4">Compatibidad con navegadores antiguos</td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+        <td>
+<xmp>
+xmlhttp= new(XMLHttpRequest());
+</xmp>                    
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;                 
+        </td>
+        <td>
+<xmp>
+else {
+</xmp>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+        <td>
+<xmp>
+xmlhttp= new ActiveXObject("Microsoft.XMLHTTP"); }
+</xmp>   
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+        <td>
+<xmp>
+xmlhttp.open("GET","message.xml",false);
+</xmp>
+        </td>
+        <td rowspan="3">obtenemos los datos </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+        <td>
+<xmp>
+xmlhttp.send();
+</xmp>
+        </td>
+    </tr>
+    <tr>
+        <td>   &nbsp;
+
+        </td>
+        <td>
+<xmp>
+xmlDoc = xmlhttp.responseXML;
+</xmp>         
+        </td>  
+    </tr>
+
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+        <td>
+ 
+            document.getElementById("to").innerHTML =<br> 
+            xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue; <br> 
+            document.getElementById("from").innerHTML = <br> 
+            xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue; <br> 
+            document.getElementById("message").innerHTML =<br>  
+            xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue; <br> 
+ 
+        </td>
+        <td>renderizamos</td>
+    </tr>
+    <tr>
+        <td>
+<xmp>
+function readXmFile() {
+</xmp>
+        </td>
+        <td>
+            &nbsp;
+        </td>  <td>
+            &nbsp;
+        </td>
+    </tr>
+
+</table>
+
+
+
+                
+    <script>
+
+         
+
+
+        function carga1() {
+                    if (window.XMLHttpRequest)  
+                        var request = new XMLHttpRequest();
+                    else
+                         xmlhttp= new ActiveXObject("Microsoft.XMLHTTP"); 
+                    request.open("GET", "message.xml", true);
+                    request.onreadystatechange = function () {
+                        if (request.readyState === 4) {
+         
+        
+                            try {
+                                xmlDoc = request.responseXML; 
+                                
+                                if (request.status === 200) {
+     
+                                    document.getElementById("to").innerHTML = 
+                                    xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue; 
+                                    document.getElementById("from").innerHTML = 
+                                    xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue; 
+                                    document.getElementById("message").innerHTML = 
+                                    xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue; 
+                                }
+        
+                            } catch (exception) {
+                                alert(exception);
+                            }
+                        }
+                    };
+                    request.send();
+                }
+        
+            </script>
+         
+  
+         <fieldset>
+            to: <div   id="to" value="too"></div><br>
+            from: <div   id="from"></div><br>
+            message: <div   id="message"></div><br>
+            <input type="button" onclick="carga1()" value="carga1"></input><br>
+        </fieldset>
+    </div>
+    
+       <p>Explicacion<bR>
+       Parse an XML Document<bR>
+Example. The following code fragment parses an XML document into an XML DOM object:<bR>
+    if (window.XMLHttpRequest)<br>
+ {// code for IE7+, Firefox, Chrome, Opera, Safari<br>
+ xmlhttp=new XMLHttpRequest();<br>
+ }<br>
+else<br>
+ {// code for IE6, IE5<br>
+ xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");<br>
+ }<br>
+xmlhttp.open("GET","books.xml",false);<br>
+xmlhttp.send();<br>
+xmlDoc=xmlhttp.responseXML;<br>
+</p>
+          </article>        
+
+
+
+        <br>
+
+
+
+
+
+
+
+
+
+
+       
+
+    </article>
+
+
+
+</body>
+
+</html>

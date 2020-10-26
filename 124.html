@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 124</title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 124
+        </h1>
+        <h4>API FileReader readAsArrayBuffer () </h4>
+    </header>
+    <article class="container">
+        <p>
+            You develop a webpage that allows a user to download a JPEG image and convert it to a PNG file.<br>
+            You need to implement the code to download the contents of the JPEG image with no additional decoding.<br>
+            Which JavaScript function should you use?<br>
+        <ul>
+            <li>readAsBinaryString()</li>
+            <li>readAsArrayBuffer()</li>
+            <li>readAsDataURL()</li>
+            <li>readAsText()</li>
+        </ul>
+        Solución B) readAsArrayBuffer()<br>
+        </p>
+        <p>Explicación<br>
+            The readAsArrayBuffer method is used to read a File, Blob, MSStream into memory as an ArrayBuffer
+            object.</p>
+        <p>Reference:<br>
+            <a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer">https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer</a>
+            <a
+                href="https://blog.teamtreehouse.com/reading-files-using-the-html5-filereader-api">https://blog.teamtreehouse.com/reading-files-using-the-html5-filereader-api</a>
+        </p>
+        <p>
+            <li>readAsBinaryString()<br>El readAsBinaryString()método se puede utilizar para leer cualquier tipo de
+                archivo. El método devuelve los datos binarios sin procesar del archivo.</li>
+            <li><strong></sctrong>readAsArrayBuffer()<br>El readAsArrayBuffer()método leerá un objeto Blobo Filey
+                    producirá un ArrayBuffer. An ArrayBufferes un búfer de datos binarios de longitud fija. Pueden
+                    resultar útiles al manipular archivos (como convertir una imagen JPEG a PNG).</strong></li>
+            <li>readAsDataURL()<br>
+                El readAsDataURL()método toma un Fileo Bloby produce una URL de datos . Esta es básicamente una cadena
+                codificada en base64 de los datos del archivo. Puede usar esta URL de datos para cosas como configurar
+                la srcpropiedad de una imagen.
+            </li>
+            <li>readAsText()<br>El readAsText()método se puede utilizar para leer archivos de texto. </li>
+
+        </p>
+        <xmp>
+var files = document.getElementById("fichero");
+var output = document.getElementById("output");
+var reader = new FileReader();
+
+reader.onload = function (e) {
+    var arrayBuffer = reader.result;
+    console.log(arrayBuffer);
+
+    var enc = new TextDecoder("utf-8");
+    output.innerHTML = enc.decode(arrayBuffer);
+}
+
+reader.readAsArrayBuffer(files.files[0]);         
+        </xmp>
+        <br>
+
+    <script>
+        function carga() {
+            var files = document.getElementById("fichero");
+            var output = document.getElementById("output");
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var arrayBuffer = reader.result;
+                console.log(arrayBuffer);
+
+                var enc = new TextDecoder("utf-8");
+                output.innerHTML = enc.decode(arrayBuffer);
+            }
+
+            reader.readAsArrayBuffer(files.files[0]);
+
+        }
+    </script>
+    selecciona un archivo png<br>
+    <input type="file" id="fichero"><br>
+    <input type="button" value="prueba" onclick="carga()"></input><br>
+
+    <div id="output"></div>
+    <br>
+    <br>
+    <br><br>
+</article>
+</body>
+
+</html>

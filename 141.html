@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 141</title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 141
+        </h1>
+        <h4>$.get   prototype this</h4>
+    </header>
+    <article class="container">
+        <p>You are developing an HTML5 web application that displays stock information.<br>
+            The application loads information from a web service by using AJAX.<br>
+            The following code defines a Stock object and loads stock data.<br>
+            <img src="141_1.PNG" /><br>
+            You need to implement the loadStock function.<br>
+            Which code segment should you use? <bR>
+            <img src="141_2.PNG" /><br>
+            <br>
+            Solución A.<br>
+            Es la única que no error!!!
+            nota: añadimos un poco de codigo para poder leer el xml<br>
+
+            <xmp>
+                Stock.prototype.loadStock0 = function (data) {
+                    var stock = this;
+                    $.get('data.xml', function (data) {
+                        data.low = data.getElementsByTagName("low")[0].childNodes[0].nodeValue ;
+                        data.high= data.getElementsByTagName("high")[0].childNodes[0].nodeValue ;
+                        stock.parseStock(data);
+                    });
+                }
+
+
+            </xmp>
+
+        </p>
+        <p>
+            Demostracion:<br>
+        <div>
+            cargara en stocklos valores del fichero data.xml
+            <xmp>
+                <xml>
+                    <low>150</low>
+                    <high>23</high>
+                </xml>
+            </xmp>
+            Modificando los valores de la instancia stock a 150 y 23
+
+        </div>
+        <div>
+            <fieldset>
+                low:  <input type="text" id="low"></input><br>
+                high:  <input type="text" id="high"></input><br>
+                <input type="button" onclick="carga1()" value="carga1"></input><br>
+            </fieldset>
+        </div>
+
+        <br>
+
+
+        <script>
+            const tlow = document.getElementById("low");
+            const thigh = document.getElementById("high");
+
+
+
+            function Stock(symbol) {
+                this.symbol = symbol;
+                this.low = 0;
+                this.high = 0;
+
+            }
+
+            Stock.prototype.print = function () {
+                tlow.value = this.low;
+                thigh.value = this.high;
+            }
+
+            Stock.prototype.parseStock = function (data) {
+                this.low = data.low;
+                this.high = data.high;
+                this.print();
+            }
+
+            Stock.prototype.loadStock0 = function (data) {
+
+                var stock = this;
+                $.get('data.xml', function (data) {
+                    data.low = data.getElementsByTagName("low")[0].childNodes[0].nodeValue;
+                    data.high = data.getElementsByTagName("high")[0].childNodes[0].nodeValue;
+                    stock.parseStock(data);
+                });
+
+            }
+
+
+
+
+
+            function carga1() {
+
+                stock.print();
+                stock.loadStock0();
+
+            }
+
+            stock = new Stock("agua");
+            stock.print();
+
+        </script>
+
+
+
+
+        Oción B) ERROR innerScope NO ESTA DEFINIDO<br>
+        <xmp>
+            Stock.prototype.loadStock1 = function (data) {
+                $.get('data.xml', function (data, innerScope) {
+
+                innerScope.parseStock(data);
+            });
+            }
+        </xmp>
+
+        Oción C) ERROR this.parseStock NO ES UNA FUNCION en este pint this se refiere a la funcion get por lo que
+        this.parseStock no existe<br>
+        <xmp>
+
+            Stock.prototype.loadStock2 = function (data) {
+                $.get('data.xml', function (data) {
+                    this.parseStock(data);
+                });
+             }
+        </xmp>
+
+        Opción D) ERROR scope.parseStock NO ES UNA FUNCION no entiendo ni lo que se intenta...<br>
+        <xmp>
+            Stock.prototype.loadStock3 = function (data) {
+                 $.get('data.xml', function (data) {
+                    (function (scope) {
+                        scope.parseStock(data);
+                    })(data);
+                });
+            }
+        </xmp>
+        </p>
+
+    </article>
+
+
+
+</body>
+
+</html>

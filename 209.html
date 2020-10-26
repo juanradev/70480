@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 209</title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 209
+        </h1>
+        <h4>css colores validos</h4>
+    </header>
+    <article class="container">
+        <p>
+            QUESTION 209<br>
+            Which CSS3 code segment styles the text color of EM elements to be red and semi-transparent?
+            <BR>
+        <ol type="A">
+            <li>em {color : #ff0007f}</li>
+            <li>em { color: rgba(255,0,0,0.5) }</li>
+            <li>em { color: rgba(255,0,0.127) }</li>
+            <li>em { color: rgba(100%,0%,0%,50%) }</li>
+        </ol>
+
+
+        <hr>
+        <p>Solución:<br>
+            b em { color: rgba(255,0,0,0.5) }<br>
+
+        </p>
+       
+            
+    
+        <p>Reference:<br>
+
+
+
+            <a href="http://www.w3schools.com/cssref/css_colors_legal.asp">
+                http://www.w3schools.com/cssref/css_colors_legal.asp</a><br>
+
+        </p>
+        <p>Explicación:<br>
+            Hexadecimal colors: <span style="color:red">#ff0000</span>; Pero en este caso faltaría la opacidad <br>
+            RGB colors: <span style="color:red">rgb(255, 0, 0)</span> ; Pero en este caso faltaría la opacidad <bR>
+            RGBA colors: <span style="color:red">rgb(255, 0, 0, 0.5)</span> rgb + Opacidad<br>
+            HSL colors: hsl(hue, saturation, lightness) <span style="color:red">hsl(125, 0%, 15%)</span> <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Hue is a degree on the color wheel (from 0 to 360) - 0 (or 360) is red, 120 is
+            green, 240 is blue<bR>
+            &nbsp;&nbsp;&nbsp;&nbsp;saturation: 0-100%<bR>
+            &nbsp;&nbsp;&nbsp;&nbsp;lightness: 0-100%<bR>
+            HSLA colors<bR>
+            &nbsp;&nbsp;&nbsp;&nbsp; <span style="color:red">hsl(125, 0%, 15%,0.25)</span><bR>
+            &nbsp;&nbsp;&nbsp;&nbsp;Hue is a degree on the color wheel (from 0 to 360) - 0 (or 360) is red, 120 is
+            green, 240 is blue<bR>
+            &nbsp;&nbsp;&nbsp;&nbsp;saturation: 0-100%<bR>
+            &nbsp;&nbsp;&nbsp;&nbsp;lightness: 0-100%<bR>
+            &nbsp;&nbsp;&nbsp;&nbsp;lpha (opacidad) 0.00 - 1<bR>
+            Predefined/Cross-browser color names <span style="color:red">red</span><bR>
+            With the currentcolor keyword: <span style="color:red">currentcolor</span><bR> <bR>
+        </p>
+
+
+        <hr>
+
+       <style>
+             em { color: rgba(255,0,0,0.5) }
+       </style>
+
+        <div class="container">
+            em { color: rgba(255,0,0,0.5) } <br>
+           <p>Lorem ipsum <em>dolor sit amet consectetur adipisicing elit.</em> Distinctio omnis dolor minus modi ullam cupiditate nisi magnam ab consequatur rem eos unde maiores sapiente, qui cumque explicabo ea soluta architecto.</p>
+        </div>
+
+
+
+
+        <br>
+        <br>
+
+
+
+
+
+</body>
+
+</html>

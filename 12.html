@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12</title>
+    <script>
+        function ReadFile() {
+
+            var input = document.getElementsByTagName("input")[0];
+var output = document.getElementsByTagName("textarea")[0];
+
+if (input.files.length === 0) {
+       output.value = 'No file selected';
+        window.setTimeout(ReadFile, 1000);
+       return;
+}
+
+var fr = new FileReader();
+fr.onload = function () {
+       var data = fr.result;
+       var array = new Int8Array(data);
+       output.value = JSON.stringify(array, null, '  ');
+       window.setTimeout(ReadFile, 1000);
+};
+fr.readAsArrayBuffer(input.files[0]);
+
+
+
+//These two methods work correctly
+//fr.readAsText(input.files[0]);
+//fr.readAsBinaryString(input.files[0]);
+}
+if (FileReader.prototype.readAsArrayBuffer && FileReader.prototype.readAsBinaryString) {
+       FileReader.prototype.readAsArrayBuffer = function readAsArrayBuffer () {
+           this.readAsBinaryString.apply(this, arguments);
+           this.__defineGetter__('resultString', this.__lookupGetter__('result'));
+           this.__defineGetter__('result', function () {
+               var string = this.resultString;
+               var result = new Uint8Array(string.length);
+               for (var i = 0; i < string.length; i++) {
+                   result[i] = string.charCodeAt(i);
+               }
+               return result.buffer;
+           });
+       };
+}
+
+    </script>
+</head>
+<body>
+    <button name="bt" onclick="ReadFile();">clica</button>
+    <input type="file" />
+    <br/>
+    <textarea cols="80" rows="10"></textarea>
+</body>
+</html>

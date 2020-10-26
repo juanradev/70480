@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  
+<script type="text/javascript">
+    function onLoadBinaryFile() {
+        const theFileElem = document.getElementById("theBinaryFile");
+        // Get the File object selected by the user (and make sure it is an image file).
+        if (theFileElem.files.length != 0 && theFileElem.files[0].type.match(/image.*/)) {
+            // Create a FileReader and handle the onload and onerror events.
+            const reader = new FileReader();
+            reader.onload = function(e){
+                const theImgElem = document.getElementById("theImage");
+                theImgElem.src = e.target.result;
+            };
+            reader.onerror = function(e){
+                alert("cannot load binary file");
+            };
+            // Read the binary file.
+            reader.readAsDataURL(theFileElem.files[0]);
+        } else {
+            alert("Please select a binary file");
+        }
+    }
+
+
+</script>
+<input type="file" id="theBinaryFile" onchange="onLoadBinaryFile()" />
+<img id="theImage"></img>
+</body>
+</html>

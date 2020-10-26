@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 90</title>
+</head>
+
+<body>
+    <header class="container">
+        <h1>QUESTION 90
+        </h1>
+        <h4>Custom error</h4>
+    </header>
+    <article class="container">
+        <p>
+            QUESTION 90
+            You create an application that sends information to a web service by using the following code: (Line
+            numbers are included for reference only.)</p>
+            <p>
+<xmp>
+01 function CustomError (code){
+02   this.errorCode = code;
+03 }
+04
+05 var code = send();
+06 if (code != 0) {
+07   throw new CustomError(code);
+08 }
+ </xmp>
+
+
+<p>
+    When the web service returns a non-zero result code, you must raise an exception that contains the result
+code.<br>
+You need to implement the code that generates the exception.<br>
+Which line of code should you insert at line 04?<br>
+<ol type="A">
+    <li>CustomError.prototype = Error.prototype;</li>
+    <li>CustomError ["ErrorType"] = Error</li>
+    <li>CustomError.customError = true;</li>
+    <li>Error-constructor = CustomError;</li>
+    <li>Error.constructor = CustomError;</li>
+</ol>
+
+
+
+</p>
+
+        <hr>
+        <p>Solución:<br>
+            a) CustomError.prototype = Error.prototype;<br></p>
+<xmp>
+01 function CustomError (code){
+02   this.errorCode = code;
+03 }
+04 CustomError.prototype = Error.prototype;
+05 var code = send();
+06 if (code != 0) {
+07   throw new CustomError(code);
+08 }
+</xmp>
+
+        
+        <p>Explicación:<br>
+Object.prototype.constructor<br>
+Returns a reference to the Object function that created the instance's prototype. Note that the value of this
+property is a reference to the function itself, not a string containing the function's name. The value is only
+read-only for primitive values such as 1, true and "test".<br>
+The constructor property is created together with the function as a single property of func.prototype.<br>
+ 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor"> 
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor</a><br>
+
+        </p>
+    </article>
+
+        <script>
+        
+        var code = 0;
+            function send()
+            {
+
+                // simulamos la reccecpcion de un code
+                return (1);
+            }
+
+            
+
+            function CustomError(code) {
+                this.mensaje ="Error custom";
+                this.errorCode = code;
+                 }
+                CustomError.prototype = Error.prototype;
+            
+            function prueba()
+           {
+            try{
+                var code = send();
+                if (code != 0)
+                { 
+                    throw new CustomError(code);
+                }
+            }
+            catch(ex)
+            {
+                alert ("se genero un error " + ex.message + " codigo " +  ex.errorCode);
+            }
+           }
+            
+        </script> 
+        <div class="container">
+                <input type="button" value="generarerror" onclick ="prueba()"></input>
+            </div>
+          
+        </div>
+
+
+
+
+        <br>
+        <br>
+
+
+
+
+
+</body>
+
+</html>

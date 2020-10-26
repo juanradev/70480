@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 6</title>
+</head>
+<body>
+    <header class="container">
+    <h1>QUESTION 6
+    </h1>
+    <h4>XMLHttpRequest /  XMLHttpRequestUpload </h4>
+    </header>
+    <article class="container">
+        <p>
+            You are developing a web page that enables customers to upload documents to a web server. <br>
+            The page includes an HTML5 PROGRESS element named progressBar that displays information about the status of the upload.<br>
+            The page includes the following code. (Line numbers are included for reference only.)
+        </p>
+        <p style="margin:50px"><code>
+            01&nbsp;&nbsp;var xhr = new XMLHttpRequest();<br>
+            02&nbsp;&nbsp;var progressBar = $("#progressBar");<br>
+            <br>
+            03&nbsp;&nbsp;function (a) {<br>
+            04&nbsp;&nbsp;&nbsp;&nbsp; if (e.lengthComputable) {<br>
+            05&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;progress.Bar.value = e(loaded / e.total ) *100;<br>
+            06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;progressBar.textContet = progressBar.values;<br>
+            07&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            08&nbsp;&nbsp;};<br>
+        </code>
+        </p>
+        <p>An event handler must be attached to the request object to update the PROGRESS element on the page.<br>
+            You need to ensure that the status of the upload is displayed in the progress bar.<br>
+            <br>
+            Which line of code should you insert at line 03?
+            <ol style="margin-left:30px" type="A">
+                <li> xhr.upload.onloadeddata =</li>
+                <li> xhr.upload.onplaying =</li>
+                <li> xhr.upload.onseeking =</li>
+                <li> xhr.upload.onprogress =</li>
+            </ol>
+        </p>
+        <p>
+            <br>
+            <br>
+            <br>
+            Correct Answer: D) xhr.upload.onprogress =<br>
+        </p>
+        <p>Explicación:<br>
+        
+        xhr.upload.onprogress = function(evt) <br>
+        {<br>
+ if (evt.lengthComputable)<br>
+ {<br>
+ var percentComplete = parseInt((evt.loaded / evt.total) * 100);<br>
+ console.log("Upload: " + percentComplete + "% complete")<br>
+ }<br>
+};<br>
+</p>
+
+Reference:<br>
+<a href="http://stackoverflow.com/questions/3352555/xhr-upload-progress-is-100-from-the-start">http://stackoverflow.com/questions/3352555/xhr-upload-progress-is-100-from-the-start</a><br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/upload">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/upload</a>
+<p>
+
+    The XMLHttpRequest upload property returns an XMLHttpRequestUpload object that can be observed to monitor an upload's progress. It is an opaque object, but because it's also an XMLHttpRequestEventTarget, event listeners can be attached to track its process.<br>
+    The following events can be triggered on an upload object and used to monitor the upload:<br>
+    <table border="1">
+        <tr>
+            <td>Event</td>
+            <td>Event listener</td>
+            <td>Description</td>
+        </tr>
+        <tr>
+            <td>loadstart</td>
+            <td>onloadstart</td>
+            <td>The upload has begun.</td>
+        </tr>
+        <tr>
+            <td style="color:red">progress</td>
+            <td style="color:red">onprogress</td>
+            <td style="color:red">Periodically delivered to indicate the amount of progress made so far.</td>
+        </tr>
+        <tr>
+            <td>abort</td>
+            <td>onabort</td>
+            <td>The upload operation was aborted.</td>
+        </tr>
+        <tr>
+            <td>error</td>
+            <td>onerror</td>
+            <td>The upload failed due to an error.</td>
+        </tr>
+        <tr>
+            <td>load</td>
+            <td>onload</td>
+            <td>The upload completed successfully.</td>
+        </tr>
+        <tr>
+            <td>timeout</td>
+            <td>ontimeout</td>
+            <td>The upload timed out because a reply did not arrive within the time interval specified by the XMLHttpRequest.timeout.</td>
+        </tr>
+        <tr>
+            <td>loadend</td>
+            <td>onloadend</td>
+            <td>The upload finished. This event does not differentiate between success or failure, and is sent at the end of the upload regardless of the outcome. Prior to this event, one of load, error, abort, or timeout will already have been delivered to indicate why the upload ended.  </td>
+        </tr>
+    </table>
+    		
+</p>
+
+
+
+
+
+    </article>
+    <div class="container">
+        <input type="button" onclick="download();" value="Prueba"></input><br>
+         <textarea readonly class="event-log" cols="50" rows="15"></textarea>
+    </div> 
+<div id="prueba">
+
+</div>
+<script>
+   
+    let respuesta;
+    let prueba = document.getElementById("prueba");
+    const personApiUrl = "006.json";
+    const request = new XMLHttpRequest();
+    const log = document.querySelector('.event-log');
+    addListeners(request);
+
+    function handleEvent(e) {
+            log.textContent = log.textContent + `${e.type}: ${e.loaded} bytes transferred\n`;
+    }
+
+    function addListeners(xhr) {
+            xhr.addEventListener('progress', handleEvent);
+    }
+
+    function download() {
+        console.log ( "entrando");
+        request.open("GET", personApiUrl, true);
+        request.onreadystatechange = function () {
+            if (request.readyState === 4) {
+                try {
+                    const response = JSON.parse(request.responseText);
+                    if (request.status === 200) {
+                        respuesta = response;
+                        console.log (respuesta);
+                        
+                        log.textContent +=  request.responseText;
+                    } else {
+                        alert(response.message);
+                    }
+                } catch (exception) {
+                    alert("error");
+                }
+            }
+        };
+        request.send();
+    }
+    
+
+    
+    </script>
+<br>
+<br>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 243</title>
+</head>
+<body>
+    <header class="container">
+    <h1>QUESTION 243
+    </h1>
+    <h4>$.ajax </h4>
+    </header>
+    <article class="container">
+        <p>
+            You are developing an application that consumes an external web service that returns the current temperature. The application has two methods:<br>
+            - The application makes an AJAX web service request to a method called GetTemperature()<br>
+            - The ShowTemperature() method displays the temperature form the web service response <br>
+            You need to ensure that the ShowTemperature() method always displays the most up-to-date
+temperature. <br>Which code segment should you use?<bR>
+        </p>
+        A)
+        <xmp>
+            var temperature;
+            fuction getResults() {
+                $.ajax ( {
+                    asynx:false,
+                    cache: false,
+                    type:'POST',
+                    url:"Weather.aspx/GetTemperature",
+                    data:{'Tmperature':temperature},
+                    dataType:'json',
+                    sucess: function (result) [
+                    temperature=result;
+                })};
+                ShowTemperature()
+            }
+            function ShowTemperature() {
+                alert (temperature);
+            }
+        </xmp>
+        B)
+        <xmp>
+            fuction getResults() {
+                $.ajax ( {
+                    type:'POST',
+                    cache: true,
+                    
+                    url:"Weather.aspx/GetTemperature",
+                    data:{'Tmperature':temperature},
+                    dataType:'json',
+                    sucess: function (result) [
+                    temperature=result;
+                })};
+                ShowTemperature()
+            }
+            function ShowTemperature() {
+                alert (temperature);
+            }
+        </xmp>
+
+        <xmp>
+            var temperature;
+            fuction getResults() {
+                $.ajax ( {
+                    asynx:true,
+                    
+                    type:'POST',
+                    url:"Weather.aspx/GetTemperature",
+                    data:{'Tmperature':temperature},
+                    dataType:'json',
+                    sucess: function (result) [
+                        temperature=result;
+                })};
+                ShowTemperature()
+            }
+            function ShowTemperature() {
+                alert (temperature);
+            }
+        </xmp>
+        <xmp>
+            var temperature;
+            fuction getResults() {
+                $.ajax ( {
+                    asynx:false,
+                    
+                    type:'POST',
+                    url:"Weather.aspx/GetTemperature",
+                    data:{'Tmperature':temperature},
+                    dataType:'json',
+                    sucess: function (result) [
+                        temperature=result;
+                })};
+                ShowTemperature()
+            }
+            function ShowTemperature() {
+                alert (temperature);
+            }
+        </xmp>
+
+
+        <p>Solución A)</p>
+
+        Las diferencias son:
+        <table border="1">
+            <tr>
+                <td colspan="2"></td>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>D</td>
+            </tr>
+            <tr>
+                <td>asynx</td>
+                <td>Un valor booleano que indica si la solicitud debe manejarse de forma asincrónica o no. El valor predeterminado es verdadero</td>
+                <td>false</td>
+                <td>default<br>true</td>
+                <td>true</td>
+                <td>false</td>
+            </tr>
+            <tr>
+                <td>cache</td>
+                <td>Un valor booleano que indica si el navegador debe almacenar en caché las páginas solicitadas. El valor predeterminado es verdadero</td>
+                <td>false</td>
+                <td>true</td>
+                <td>default <br>true</td>
+                <td>default<br>true</td>
+            </tr>
+        </table>
+        Nos piden que se muestre temperatura lo más actualizada posible. <bR>
+        Por lo que debemos fijarnos en el valor cache = false, por lo que la opción correcta es la A.</br>
+        References:
+        <a href="http://api.jquery.com/jQuery.ajax/">http://api.jquery.com/jQuery.ajax/</a>
+        <a href="https://www.w3schools.com/jquery/ajax_ajax.asp">https://www.w3schools.com/jquery/ajax_ajax.asp</a>
+      
+        </article>
+
+   
+<br>
+<br>
+
+</body>
+</html>

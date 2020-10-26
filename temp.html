@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        #grid {
+            width: 30em;
+            height: 30em;
+            display: grid;
+            grid-columns: 25% 25% 25% 25%;
+            grid-rows: 25% 25% 25% 25%;
+        }
+        #top-right {
+            grid-column: 3;
+            grid-row: 2;
+        }
+        
+        #bottom-left {
+            grid-column: 2;
+            grid-row: 3;
+        }
+        
+      
+        
+        #content {
+            grid-row: 1;
+            -ms-grid-row-span: 4;
+            grid-column: 1;
+           -ms-grid-column-span: 4;
+        }
+        </style>
+
+<style type="text/css">
+    .exclusion  {
+     -ms-wrap-flow: both;
+      position: absolute;
+      left: 20%;
+      top: 20%;
+      width: 50%;
+      height: 50%;
+      background-color: rgba(220, 230, 242, 0.5);
+    }
+
+    
+</style>
+<style type="text/css" id="imagen-centrada">
+    #ejemplo {
+    background: ##EAEAEA;
+    overflow: hidden;
+    border: 1px dashed #e5e5e5;
+    margin: -1px;
+    }
+    #ejemplo .columna {
+    float: left;
+    padding: 0 10px;
+    width: 50%;
+    }
+    #ejemplo h3 {
+    text-align: center!important;
+    font-family: garamond, serif;
+    font-size: 2rem;
+    font-style: italic;
+    }
+    #ejemplo > p {
+    padding: 5px 20px;
+    font-family: garamond, serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #707070;
+    line-height: 1;
+    text-align: center;
+    }
+    .columna p {
+    font-family: georgia, serif;
+    margin: 0;
+    line-height: 1.2;
+    text-align: justify;
+    padding: 5px 0;
+    font-size: .9rem;
+    color: #664477;
+    }
+    .columna .imagen-centrada {
+    float: right;
+    font: 12px/1 carme, sans-serif;
+    margin-right: -105px;
+    padding-left: 10px;
+    padding-top: 5px;
+    text-align: center;
+    width: 200px;
+    }
+    .columna .empuje {
+    float: left;
+    height: 278px;
+    padding-top: 5px;
+    width: 95px;
+    }
+    </style>
+ 
+</head>
+<body>
+    <div id="grid">
+        <div class=”exclusion”></div>
+        <div id="top-right" class="exclusion"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate, recusandae exercitationem? Omnis maxime, officiis alias reprehenderit unde, quam necessitatibus voluptate dolor dolore ut impedit doloribus ex a asperiores qui deleniti?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis maxime blanditiis suscipit tempora perspiciatis aperiam harum, aut veritatis doloribus sint illo iste maiores illum voluptatem ipsa omnis consequuntur veniam sequi.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ratione est omnis corrupti! Esse, perspiciatis? Ipsum sapiente in amet ut, dolores autem unde quasi eaque, quis repellat soluta ipsam obcaecati?
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi cum, distinctio quod non aliquam deleniti repudiandae nostrum exercitationem amet optio. Dicta distinctio laudantium, quam inventore facere ipsum. Ipsam, repudiandae perferendis..</div>
+            <div id="content">Lorem ipsum…</div>
+            <div id="bottom-left" class="exclusion"> Lorem ipsum dolor sit amet...</div>
+    </div>
+
+  
+
+    <div id="ejemplo">
+        <h3>Los cepillos de dientes Aplacan la placa</h3>
+        <p>Reconozcamos que la ciencia se está esforzando con los cepillos de dientes. De hecho, yo creo que se están pasando. Ahora mismo, el presupuesto de Defensa de un país ya es menor que el destinado a la investigación en cepillos de dientes.</p>
+        <div class="columna">
+        <p>No hay más que ver los anuncios de la tele: parece que los cepillos de dientes los diseña la NASA: cabezal flexible, mango ergonómico<span class="imagen-centrada"><img alt="Centrar imagen entre dos columnas de texto" src="//4.bp.blogspot.com/-h_gcTJXH8c8/UIWZuLHgc2I/AAAAAAAACyc/QvXF00C43pE/s1600/imagen_centrada_dos_columnas.jpg"><b>Luis Piedrahita</b><br/>Org img: <a href="http://commons.wikimedia.org/wiki/File:Luis_Piedrahita.jpg">Wikipedia</a></span> antideslizante, monofilamentos
+        semiblandos con las puntas redondeadas y cerdas cruzadas bicolor&#8230; Y eso, &#191;el diente lo nota? &#161;Cuesta doce euros en una farmacia! &#191;Percibirá el diente si la cerda es bicolor?</p>
+        <p>En el anuncio te ponen un primerísimo primer plano de cómo se quedan los dientes si no los limpias con las cerdas cruzadas, y parece que te queda la boca llena de escombros. &#191;Qué comen los señores cuyas bocas salen en estos anuncios? &#191;Comen tierra? Parece que esa boca ha estado comiendo barro toda la vida.</p>
+        <p>A una persona que le va tan mal como para comer tierra yo no le recomendaría que se gastara doce euros en un cepillo de dientes. Total, cuando vas a casa de un amigo te lo olvidas y te lavas los dientes con el dedo.</p>
+        </div>
+        
+        <div class="columna">
+        <p>Eso sí, te lavas los dientes como si no pasara nada. Sólo el detalle de que no tienes cepillo. Pasta al dedo, enjuagas, escupes&#8230;<span class="empuje">&nbsp;</span> Igual. La única diferencia respecto a lavarse con el cepillo es que no dejas el espejo como si lo hubieran pintado al gotelé.</p>
+        <p>Es inevitable: aunque metas la cabeza dentro del lavabo, luego miras al espejo y parece la Vía Láctea. &#191;Os imagináis cómo tiene que estar el espejo del Cuñao? &#191;Y cómo será el cepillo de dientes del Cuñao? &#191;Tendrá cabezal flexible? Yo creo que el Cuñao es de esas personas que prefieren el hilo dental.</p>
+        <p>Entre los jóvenes no se usa mucho el hilo dental. Yo he visto chicas que lo usan como lencería, pero nada más.</p>
+        <p>Los cepillos son importantes porque te marcan la vida. Cuando era pequeño, mi hermana tenía un cepillo rosa de <i>Hello Kitty</i>. A mí eso me marcó...</p>
+        <p>Si quieres leer más... compra su libro :-D</p>
+        </div>
+        </div>
+</body>
+</html>

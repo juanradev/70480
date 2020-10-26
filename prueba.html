@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+  max-width: 100%;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 700px;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr 2fr 1fr 2fr 1fr 2fr;
+  -ms-grid-rows: auto auto auto auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr 2fr);
+  grid-template-rows: repeat(4, auto);
+}
+
+.wrapper .inner{
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 6;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 4;
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 4;
+}
+
+.wrapper .exclusion {
+   -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-wrap-flow: both;
+  grid-column: 3 / span 3;
+  grid-row: 2 / span 2;
+  padding: 5px 10px;
+}
+
+.wrapper .exclusion img {
+  border-radius: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="wrapper"><div class="inner">
+        <h1>CSS Exclusions Example</h1>
+        
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam posuere quam non enim commodo, ac pellentesque tortor lacinia. Aenean iaculis interdum tempor. Nullam porttitor lectus eget mollis egestas. Cras posuere velit id vehicula tempor. Mauris id ex id nisi sagittis ornare vitae a erat. Aliquam nisi risus, gravida sit amet augue id, feugiat tempor dui. Vestibulum tincidunt iaculis tellus, eget finibus odio. Quisque ac dapibus massa. Donec placerat nisi velit, quis sagittis turpis lobortis ac. Praesent ornare malesuada velit, id placerat enim imperdiet sit amet. Vestibulum consequat ligula tellus, quis lacinia mauris porta in. Praesent sit amet faucibus purus. Integer vel sagittis augue.</p>
+      
+      <p>Aliquam tempor interdum volutpat. Suspendisse potenti. Nunc nibh elit, sagittis nec libero a, pretium fermentum sapien. Aliquam eu risus eu dui varius elementum. Curabitur ut ex luctus, egestas dui sit amet, malesuada lectus. Cras a nibh in velit mattis feugiat at at eros. Etiam et leo arcu. Maecenas egestas enim purus, at ornare velit laoreet a. Etiam egestas pharetra diam, non accumsan sapien posuere ornare. Ut sed velit porttitor dolor tincidunt tincidunt. Pellentesque sit amet pulvinar diam. Cras et purus vulputate, consequat dui vel, cursus risus. Quisque pulvinar convallis tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      
+      <p>Sed mollis fermentum lorem, vel vulputate lectus lacinia sit amet. Praesent pulvinar ante id consequat cursus. Quisque faucibus dui et massa suscipit, nec hendrerit nulla ornare. Donec accumsan eros a dictum tempor. Vestibulum a metus id quam eleifend ornare. Fusce sit amet lacus ut nisi viverra volutpat ultrices a ipsum. Ut lacus leo, dictum sit amet nulla ac, volutpat tempor nunc. Donec ut enim eget massa luctus finibus ac ac lorem. Vestibulum pretium lacus a orci molestie volutpat quis eget mi. Aenean lacus erat, dignissim eget mollis auctor, vehicula a dolor. Curabitur id mollis eros, at auctor ipsum.</p>
+      </div>
+       <div class="exclusion"><img src="alien.png"></div>
+      </div>
+</body>
+</html>

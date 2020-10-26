@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style src=".css" type="css/text"></style>
+    <link rel="stylesheet" href="stylesite.css">
+    <title>Question 226</title>
+</head>
+<body>
+    <header class="container">
+    <h1>QUESTION 226
+    </h1>
+    <h4>WebSocket (TEORIA)</h4>
+    </header>
+    <article class="container">
+       <p>You are building a multiplayer online game that will be deployed to an application server named Server1.
+         Clients will have a low-latency, persistent connection to Server1.<br>
+         You need to identify a solution for the game. The solution must meet the following requirements:
+      <ul>
+         <li>Allows clients to accept low-latency push events from Server1</li> 
+         <li>Allows clients to receive on message events from Server1
+         </li>
+      </ul>
+      What should you use to develop the solution?<br>
+      <ul>
+         <li>Ajax</li>
+         <li>HTTP server push</li>
+         <li>WebSockets</li>
+         <li>REST</li>
+      </ul>
+      </p>
+      <p>Solucion: WebSocket<br>
+      Permite recibir mensajes desde el servidor, permite aceptar eventos desde el servidor</p>
+      <p>Explanation/Reference:<br>
+         Explanation:<br>
+         <a href="https://www.html5rocks.com/en/tutorials/websockets/basics/">
+            https://www.html5rocks.com/en/tutorials/websockets/basics/
+            </a>
+         </p>
+
+      <div style="border-width:10px;background-color: lightblue;">
+         Por lo demás saber: 
+      <p style="margin-left:30px"><br>
+         - <strong>window.WebSocket</strong><br>
+         - Apertura de conexión: <strong>const socket = new WebSocket('ws://websocketserver.contoso.com/bookings'); defecto 80 thtp</strong><br>
+         -el puerto por defecto para wss es 443<br>
+         - aunque en la url nos pueden indicar otro puerto<br>
+         - establecen una conexión ws ó wss paralelo <br>
+         - estados: CONNECTING (0) , OPEN (1), CLOSING (2), CLOSED (3) <br>
+         - podemos acceder al estado mediante  socket.readyState == 1 <br>
+         &nbsp;&nbsp;&nbsp;&nbsp;while (socket.readyState != 1) { <br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... // wait until the socket is open before continuing <br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+         - eventos: <br>
+         
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;socket.onopen<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;socket.onerror<br> 
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;socket.onclose<br> 
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event.wasClean, event.code, event.message<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;socket.onmessage ***<br> 
+         <br><br>
+         - Para enviar mensajes <strong>socket.send(message);</strong> <br>
+         
+        - los mensajes pueden ser: 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UTF8 text data; plain text, JSON, base64-encoded, and so on.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blobs, such as files or images.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An ArrayBuffer object. This object represents a buffer used to store raw binary data. <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An ArrayBufferView object. This object represents a typed array view that can be used to access binary data in an ArrayBuffer.<br>
+        <br><br>- Para recibir mensajes <strong>socket.onmessage **</strong>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;socket.onmessage = function(event) { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Message has been received <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (event.type == "Text") { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;handleTextMessage(event.data); <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;handleBinaryMessage(socket.binaryType, event.data); <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };  <br>
+ </p>
+</div>
+
+        </article>  
+
+</body>
+</html>
